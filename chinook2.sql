@@ -1,6 +1,8 @@
 
 BEGIN;
-
+DROP DATABASE chinook;
+CREATE DATABASE chinook;
+USE chinook;
 CREATE TABLE IF NOT EXISTS `artists`
 (
 
