@@ -23,6 +23,7 @@ foreach ($results as $result) {
     $album_title = $result['album_title'];
     $track_name = $result['track_name'];
 
+    // If this artist hasn't been added to the output yet, add it
     if (!isset($output[$artist_name])) {
         $output[$artist_name] = [
             'artist' => $artist_name,
@@ -30,6 +31,7 @@ foreach ($results as $result) {
         ];
     }
 
+    // If this album hasn't been added to the output for this artist yet, add it
     if (!isset($output[$artist_name]['album_index'][$album_title])) {
         $output[$artist_name]['album_index'][$album_title] = count($output[$artist_name]['albums']);
         $output[$artist_name]['albums'][] = [
@@ -39,6 +41,7 @@ foreach ($results as $result) {
     }
 
     $album_index = $output[$artist_name]['album_index'][$album_title];
+    // Add this track to the output for this artist and album
     $output[$artist_name]['albums'][$album_index]['tracks'][] = [
         'name' => $track_name
     ];
