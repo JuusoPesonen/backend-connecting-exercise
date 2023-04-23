@@ -5,7 +5,7 @@ require_once "./inc/headers.php";
 
 $conn = createDbConnection();
 
-$artist_id = 2; // Replace this with the correct artist_id
+$artist_id = 2;
 
 $sql = "SELECT artists.Name as artist_name, albums.Title as album_title, tracks.Name as track_name 
         FROM artists
