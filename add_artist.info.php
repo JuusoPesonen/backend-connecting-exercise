@@ -16,7 +16,7 @@ if (!isset($_POST['artist_name']) || !isset($_POST['album_title']) || !isset($_P
 
 $artist_name = $_POST['artist_name'];
 $album_title = $_POST['album_title'];
-$tracks = $_POST['tracks']; // Array of track names
+$tracks = $_POST['tracks'];
 
 try {
     $conn->beginTransaction();
@@ -35,7 +35,7 @@ try {
     $stmt3 = $conn->prepare("INSERT INTO tracks (Name, AlbumId, MediaTypeId) VALUES (:name, :album_id, :media_type_id)");
 
     foreach ($tracks as $track_name) {
-        $media_type_id = 1; // Replace this with the correct MediaTypeId
+        $media_type_id = 1;
         $stmt3->bindParam(':name', $track_name, PDO::PARAM_STR);
         $stmt3->bindParam(':album_id', $album_id, PDO::PARAM_INT);
         $stmt3->bindParam(':media_type_id', $media_type_id, PDO::PARAM_INT);
