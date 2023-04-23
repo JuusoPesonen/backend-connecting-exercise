@@ -1,7 +1,7 @@
 <?php
 
 function createDbConnection(){
-    $ini = parse_ini_file("../confi.ini", true);
+    $ini = parse_ini_file("./config.ini", true);
 
     $host = $ini["host"];
     $db = $ini["db"];
