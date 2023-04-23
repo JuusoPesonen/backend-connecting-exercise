@@ -49,8 +49,12 @@ try {
     }
 
     $conn->commit();
-    echo "Artist, album and tracks added successfully";
+    //echo "Artist, album and tracks added successfully";
+    http_response_code(200);
+    echo json_encode(array("message" => "Artist, album and tracks added successfully"));
 } catch (Exception $e) {
     $conn->rollBack();
-    echo "Error adding artist, album and tracks: " . $e->getMessage();
+    //echo "Error adding artist, album and tracks: " . $e->getMessage();
+    http_response_code(500);
+    echo json_encode(array("message" => "Error adding artist, album and tracks: " . $e->getMessage()));
 }
