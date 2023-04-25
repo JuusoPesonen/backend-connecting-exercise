@@ -8,7 +8,7 @@ $conn = createDbConnection();
 $artist_id = 1;
 
 try {
-    // Begin the transaction
+
     $conn->beginTransaction();
 
     // Delete invoice_items
@@ -23,7 +23,7 @@ try {
     $stmt->execute();
 
      // Delete tracks from playlist_track
-     $sql = "DELETE FROM playlist_track
+    $sql = "DELETE FROM playlist_track
      WHERE TrackId IN (
          SELECT TrackId FROM tracks
          JOIN albums ON tracks.AlbumId = albums.AlbumId
@@ -56,13 +56,11 @@ try {
     $stmt->bindParam(':artist_id', $artist_id, PDO::PARAM_INT);
     $stmt->execute();
 
-    // Commit the transaction
     $conn->commit();
 
     echo "Artist and related data deleted successfully.";
 
 } catch (PDOException $e) {
-    // Rollback the transaction in case of an error
     $conn->rollBack();
     echo "Error: " . $e->getMessage();
 }
