@@ -19,5 +19,5 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($results as $result) {
     echo "Track: " . $result['track_name'] . "<br>";
-    echo "Composer: " . $result['composer'] . "<br><br>";
+    echo "Composer: " . $result['composer'] . "<br>";
 }
