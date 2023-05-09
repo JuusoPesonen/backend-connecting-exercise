@@ -3,6 +3,8 @@
 require_once "./inc/functions.php";
 require_once "./inc/headers.php";
 
+header("Content-Type: text/html");
+
 $conn = createDbConnection();
 
 $playlist_id = 1;
@@ -18,6 +20,6 @@ $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($results as $result) {
-    echo "Track: " . $result['track_name'] . "<br>";
-    echo "Composer: " . $result['composer'] . "<br>";
+    echo "<strong>". $result['track_name'] . "</strong>" . "<br>";
+    echo $result['composer'] . "<br><br>";
 }
